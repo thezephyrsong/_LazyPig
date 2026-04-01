@@ -63,6 +63,24 @@ LazyPigOptions = {
 		},
 	},
 	{
+		text = "Timbermaw Hold Rep Items",
+		exclusive = true,
+		checkBoxes = {
+			{ text = NEED, var = "TIMBERMAW", value = 1, tooltip = NEED },
+			{ text = GREED, var = "TIMBERMAW", value = 2, tooltip = GREED },
+			{ text = PASS, var = "TIMBERMAW", value = 0, tooltip = PASS },
+		},
+	},
+	{
+		text = "Runecloth Roll Automation",
+		exclusive = true,
+		checkBoxes = {
+			{ text = NEED, var = "RUNECLOTH", value = 1, tooltip = NEED },
+			{ text = GREED, var = "RUNECLOTH", value = 2, tooltip = GREED },
+			{ text = PASS, var = "RUNECLOTH", value = 0, tooltip = PASS },
+		},
+	},
+	{
 		text = "Salvation Remover",
 		exclusive = true,
 		checkBoxes = {
