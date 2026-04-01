@@ -25,6 +25,8 @@ LPCONFIG.AQ = nil                  -- [number or nil] AQ scarabs/idols auto roll
 LPCONFIG.SAND = 1                  -- [number or nil] Corrupted sand auto roll
 LPCONFIG.ES_SHARDS = nil           -- [number or nil] Dream Shrads auto roll
 LPCONFIG.NAXX = nil                -- [number or nil] Scraps auto roll
+LPCONFIG.TIMBERMAW = nil           -- [number or nil] Timbermaw Hold rep items auto roll
+LPCONFIG.RUNECLOTH = nil           -- [number or nil] Runecloth auto roll
 LPCONFIG.ROLLMSG = false           -- Lazy Pig Auto Roll Messages
 LPCONFIG.DUEL = false              -- Auto cancel duels
 LPCONFIG.SPECIALKEY = false        -- Special key combinations
@@ -1026,6 +1028,17 @@ function LazyPig_AutoRoll(id)
 	if itemID == 22484 then
 		roll = 1
 		RollOnLoot(id, 1)
+	end
+
+	-- Hard coded auto need for Deadwood/Winterfall/Blackroot reputation items
+	if LPCONFIG.TIMBERMAW and (itemID == 21377 or itemID == 21383 or itemID == 41996) then
+		roll = LPCONFIG.TIMBERMAW
+		RollOnLoot(id, LPCONFIG.TIMBERMAW)
+	end
+
+	if LPCONFIG.RUNECLOTH and itemID == 14047 then
+		roll = LPCONFIG.RUNECLOTH
+		RollOnLoot(id, LPCONFIG.RUNECLOTH)
 	end
 	-- Need on everything in Alterac Valley
 	if LazyPig_BG() then
