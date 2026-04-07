@@ -63,6 +63,15 @@ LazyPigOptions = {
 		},
 	},
 	{
+		text = "Scourgestones Roll Automation",
+		exclusive = true,
+		checkBoxes = {
+			{ text = NEED, var = "SCOURGE", value = 1, tooltip = NEED },
+			{ text = GREED, var = "SCOURGE", value = 2, tooltip = GREED },
+			{ text = PASS, var = "SCOURGE", value = 0, tooltip = PASS },
+		},
+	},
+	{
 		text = "Timbermaw Hold Rep Items",
 		exclusive = true,
 		checkBoxes = {
@@ -252,7 +261,7 @@ function LazyPig_CreateOptionsFrame()
 	for i = 1, getn(LazyPigOptions) do
 		if i == 7 then
 			offsetX, offsetY = insetLeft + columnWidth, insetTop
-		elseif i == 13 then
+		elseif i == 14 then
 			offsetX, offsetY = insetLeft + columnWidth * 2, insetTop
 		end
 		
