@@ -25,6 +25,7 @@ LPCONFIG.AQ = nil                  -- [number or nil] AQ scarabs/idols auto roll
 LPCONFIG.SAND = 1                  -- [number or nil] Corrupted sand auto roll
 LPCONFIG.ES_SHARDS = nil           -- [number or nil] Dream Shrads auto roll
 LPCONFIG.NAXX = nil                -- [number or nil] Scraps auto roll
+LPCONFIG.SCOURGE = nil             -- [number or nil] Scourgestones auto roll
 LPCONFIG.TIMBERMAW = nil           -- [number or nil] Timbermaw Hold rep items auto roll
 LPCONFIG.RUNECLOTH = nil           -- [number or nil] Runecloth auto roll
 LPCONFIG.ROLLMSG = false           -- Lazy Pig Auto Roll Messages
@@ -993,6 +994,10 @@ local NaxxLoot = {
 	[22376] = "Wartorn Cloth Scrap",
 }
 
+local ScourgeLoot = {
+	[12843] = "Corruptor's Scourgestone",
+}
+
 function LazyPig_AutoRoll(id)
 	local roll = nil
 	local _, _, _, quality = GetLootRollItemInfo(id)
@@ -1054,6 +1059,11 @@ function LazyPig_AutoRoll(id)
 	if LPCONFIG.NAXX and NaxxLoot[itemID] then
 		roll = LPCONFIG.NAXX
 		RollOnLoot(id, LPCONFIG.NAXX)
+	end
+
+	if LPCONFIG.SCOURGE and ScourgeLoot[itemID] then
+		roll = LPCONFIG.SCOURGE
+		RollOnLoot(id, LPCONFIG.SCOURGE)
 	end
 
 	if LPCONFIG.ROLLMSG and type(roll) == "number" then
