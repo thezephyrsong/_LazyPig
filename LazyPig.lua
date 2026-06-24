@@ -2216,7 +2216,7 @@ function LazyPig_ChatFrame_OnEvent(event)
 		end
 	end
 
-	-- Spam filter: skip all work when spam filter is off
+-- Spam filter: skip all work when spam filter is off
 	if LPCONFIG.SPAM then
 		if arg2 and arg2 ~= GetUnitName("player") and (event == "CHAT_MSG_SAY" or event == "CHAT_MSG_CHANNEL" or event == "CHAT_MSG_YELL" or event == "CHAT_MSG_EMOTE" and not (IsGuildMate(arg2) or IsFriend(arg2))) then
 			local time = GetTime()
@@ -2232,25 +2232,19 @@ function LazyPig_ChatFrame_OnEvent(event)
 			ChatMessage[index][arg1] = time
 		end
 
-<<<<<<< HEAD
-    -- suppress BigWigs spam
-	if LPCONFIG.SPAM and event == "CHAT_MSG_SAY" and string.find(arg1 or "" ,"^Casted %u[%a%s]+ on %u[%a%s]+") then
-        return
-    end
-
-	-- suppress #showtooltip spam
-	if string.find(arg1 or "" , "^#showtooltip") then
-		return
-=======
 		-- suppress BigWigs spam
-		if event == "CHAT_MSG_SAY" and strfind(arg1 or "" ,"^Casted %u[%a%s]+ on %u[%a%s]+") then
+		if event == "CHAT_MSG_SAY" and strfind(arg1 or "", "^Casted %u[%a%s]+ on %u[%a%s]+") then
 			return
 		end
->>>>>>> 9319eeb79bd39d7952bc09ee62e62c303c8deee6
+
+		-- suppress #showtooltip spam
+		if strfind(arg1 or "", "^#showtooltip") then
+			return
+		end
 	end
 
 	-- suppress rested xp spam
-	if string.find(arg1 or "", "=== .+ RESTED XP") and arg2 ~= UnitName("player") then
+	if strfind(arg1 or "", "=== .+ RESTED XP") and arg2 ~= UnitName("player") then
 		return
 	end
 
