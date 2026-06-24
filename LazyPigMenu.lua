@@ -156,6 +156,7 @@ LazyPigOptions = {
 			{ text = "Gossip Auto Processing", var = "GOSSIP", tooltip = "Gossip Auto Processing (hold Shift to bypass)", tooltipSub = "Skip gossip choises from innkeepers, fly masters etc." },
 			{ text = "Auto Dismount", var = "DISMOUNT", tooltip = "Auto Dismount", tooltipSub = "Auto dismount when it's required by another action." },
 			{ text = "Auto Stance", var = "AUTOSTANCE", tooltip = "Auto Stance", tooltipSub = "Automatically change to required warrior stance/druid form on spell cast." },
+			{ text = "White Items Group Loot", var = "WHITELOOT", tooltip = "White Items Group Loot", tooltipSub = "Automatically sets the loot method to Group Loot and threshold to Common (White) when you are the group leader.", setFunc = LazyPig_SetWhiteLoot },
 		},
 	},
 }

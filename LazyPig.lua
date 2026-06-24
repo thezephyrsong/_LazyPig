@@ -47,6 +47,7 @@ LPCONFIG.REZ = false               -- Auto accept resurrection while in raid, du
 LPCONFIG.GOSSIP = true             -- Auto proccess gossip
 LPCONFIG.SALVA = nil               -- [number or nil] Autoremove Blessing of Salvation
 LPCONFIG.REMOVEMANABUFFS = false   -- Autoremove Blessing of Wisdom, Arcane Intellect, Prayer of Spirit
+LPCONFIG.WHITELOOT = false         -- Auto White Items Group Loot
 
 BINDING_HEADER_LP_HEADER = "_LazyPig";
 BINDING_NAME_LOGOUT = "Logout";
@@ -209,6 +210,8 @@ function LazyPig_OnLoad()
 	this:RegisterEvent("CHAT_MSG")
 	this:RegisterEvent("CHAT_MSG_SYSTEM")
 	this:RegisterEvent("PARTY_INVITE_REQUEST")
+	this:RegisterEvent("PARTY_LEADER_CHANGED")
+	this:RegisterEvent("PARTY_MEMBERS_CHANGED")
 	this:RegisterEvent("CONFIRM_SUMMON")
 	this:RegisterEvent("RESURRECT_REQUEST")
 	this:RegisterEvent("UPDATE_BATTLEFIELD_STATUS")
@@ -770,6 +773,8 @@ function LazyPig_OnEvent(event)
 		end
 		TargetLastTarget();
 	end
+	elseif event == "PARTY_LEADER_CHANGED" or event == "PARTY_MEMBERS_CHANGED" then
+		LazyPig_SetWhiteLoot()
 	--DEFAULT_CHAT_FRAME:AddMessage(event);
 end
 
@@ -1208,6 +1213,12 @@ function LazyPig_GreenRoll()
 		end
 	end
 	return pass
+end
+
+function LazyPig_SetWhiteLoot()
+	if LPCONFIG.WHITELOOT and UnitIsPartyLeader("player") then
+		SetLootMethod("group", 1)
+	end
 end
 
 local COLOR_COPPER = "|cffeda55f"
