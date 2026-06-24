@@ -1209,8 +1209,14 @@ function LazyPig_GreenRoll()
 end
 
 function LazyPig_SetWhiteLoot()
-	if LPCONFIG.WHITELOOT and UnitIsPartyLeader("player") then
-		SetLootMethod("group", 1)
+	if LPCONFIG.WHITELOOT and IsPartyLeader() then
+		local method, partyIndex, raidIndex = GetLootMethod()
+		local threshold = GetLootThreshold()
+		
+		-- Only call the server if it isn't already set to Group Loot (group) and Common (1)
+		if not (method == "group" and threshold == 1) then
+			SetLootMethod("group", 1)
+		end
 	end
 end
 
