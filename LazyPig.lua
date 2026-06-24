@@ -157,12 +157,6 @@ local SPELL_SLOW_FALL = 130
 local hasBuffEvents = false
 
 local function twipe(t)
-<<<<<<< HEAD
-	if type(t) ~= "table" then return {} end
-	for i = table.getn(t), 1, -1 do table.remove(t, i) end
-	for k in pairs(t) do t[k] = nil end
-	return t
-=======
 	if type(t) == "table" then
 		for i = getn(t), 1, -1 do
 			tremove(t, i)
@@ -174,7 +168,6 @@ local function twipe(t)
 	else
 		return {}
 	end
->>>>>>> 9319eeb79bd39d7952bc09ee62e62c303c8deee6
 end
 
 local function strsplit(str, delimiter, container)
@@ -772,9 +765,9 @@ function LazyPig_OnEvent(event)
 			StaticPopup_Hide("RESURRECT");
 		end
 		TargetLastTarget();
-	end
 	elseif event == "PARTY_LEADER_CHANGED" or event == "PARTY_MEMBERS_CHANGED" then
 		LazyPig_SetWhiteLoot()
+	end
 	--DEFAULT_CHAT_FRAME:AddMessage(event);
 end
 
