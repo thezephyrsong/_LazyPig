@@ -63,6 +63,33 @@ LazyPigOptions = {
 		},
 	},
 	{
+		text = "Scourgestones Roll Automation",
+		exclusive = true,
+		checkBoxes = {
+			{ text = NEED, var = "SCOURGE", value = 1, tooltip = NEED },
+			{ text = GREED, var = "SCOURGE", value = 2, tooltip = GREED },
+			{ text = PASS, var = "SCOURGE", value = 0, tooltip = PASS },
+		},
+	},
+	{
+		text = "Timbermaw Hold Rep Items",
+		exclusive = true,
+		checkBoxes = {
+			{ text = NEED, var = "TIMBERMAW", value = 1, tooltip = NEED },
+			{ text = GREED, var = "TIMBERMAW", value = 2, tooltip = GREED },
+			{ text = PASS, var = "TIMBERMAW", value = 0, tooltip = PASS },
+		},
+	},
+	{
+		text = "Runecloth Roll Automation",
+		exclusive = true,
+		checkBoxes = {
+			{ text = NEED, var = "RUNECLOTH", value = 1, tooltip = NEED },
+			{ text = GREED, var = "RUNECLOTH", value = 2, tooltip = GREED },
+			{ text = PASS, var = "RUNECLOTH", value = 0, tooltip = PASS },
+		},
+	},
+	{
 		text = "Salvation Remover",
 		exclusive = true,
 		checkBoxes = {
@@ -138,7 +165,7 @@ function LazyPig_CreateOptionsFrame()
 	local frame = CreateFrame("Frame", "LazyPigOptionsFrame", UIParent)
 	tinsert(UISpecialFrames,"LazyPigOptionsFrame")
 	frame:SetFrameStrata("DIALOG")
-	frame:SetWidth(500)
+	frame:SetWidth(740)
 	frame:SetHeight(670)
 	frame:SetPoint("CENTER", UIParent, 0, 80)
 	frame:SetBackdrop({
@@ -232,8 +259,10 @@ function LazyPig_CreateOptionsFrame()
 	local offsetX, offsetY = insetLeft, insetTop
 	local index = 1
 	for i = 1, getn(LazyPigOptions) do
-		if i == 10 then
+		if i == 7 then
 			offsetX, offsetY = insetLeft + columnWidth, insetTop
+		elseif i == 14 then
+			offsetX, offsetY = insetLeft + columnWidth * 2, insetTop
 		end
 		
 		-- Check box group title
